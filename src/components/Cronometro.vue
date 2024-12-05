@@ -1,6 +1,7 @@
 <script setup>
 import { computed, reactive, ref } from "vue";
 import NumberFlow, { NumberFlowGroup } from '@number-flow/vue';
+import Presents from "../assets/presents.png";
 
 let currentTime = ref(new Date());
 const christmasTime = new Date("2024-12-25T00:00:00");
@@ -44,30 +45,76 @@ let updating = setInterval(() => {
 
 <template>
     <section>
+        <h2>Tempo limitado</h2>
+        <p>Nessa festas de fim de ano mande um presente para a pessoa amada e compartilhe a alegria do Natal.</p>
         <div>
             <NumberFlowGroup>
                 <NumberFlow :trend="-1" :value="remaining.Days" :format="{ minimumIntegerDigits: 1 }" />
                 <span>d - </span>
                 <NumberFlow :trend="-1" :value="remaining.Hours" :format="{ minimumIntegerDigits: 1 }" />
                 <span>h - </span>
-                <NumberFlow :trend="-1" :value="remaining.Minutes" :format="{ minimunIntegerDigits: 1 }" />
+                <NumberFlow :trend="-1" :value="remaining.Minutes" :format="{ minimumIntegerDigits: 2 }" />
                 <span>m - </span>
                 <NumberFlow :trend="-1" :value="remaining.Seconds" :format="{ minimumIntegerDigits: 1 }" />
                 <span>s</span>
             </NumberFlowGroup>
-            <p>{{ message }}</p>
+            <p v-if="message">{{ message }}</p>
         </div>
-
-
+        <img :src="Presents" alt="">
     </section>
 </template>
 
 <style scoped lang="scss">
+section {
+
+    margin: clamp(0rem, 2vw, 10rem);
+    padding: 0.5em;
+    text-align: center;
+}
+
+h2 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 600;
+    margin-block-end: 1.5rem;
+}
+
+p {
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.4;
+    margin-block-end: 1.125rem;
+    width: fit-content;
+    max-width: clamp(350px, 60vw, 500px);
+    margin: auto;
+
+
+    @media (min-width: 767px) {
+        margin: auto;
+        line-height: 1.5;
+    }
+}
+
+div {
+    padding: 0.25em;
+    text-align: center;
+
+}
+
 number-flow-vue::part(number),
 span {
     color: #CD3C32;
+    font-size: clamp(1.8rem, 5vw, 4rem);
     font-weight: 600;
-    font-size: clamp(2rem, 5vw, 4rem);
-    line-height: clamp(1.2, 1.4, 1.5);
+    line-height: 1.7;
+    
+}
+
+img {
+    width: 40%;
+    
+    @media (max-width: 480px) {
+        width: 100%;
+    }
+    
 }
 </style>
