@@ -37,6 +37,10 @@ let updating = setInterval(() => {
     currentTime.value = new Date();
     countdown();
 
+    if (Math.abs(difference.value) <= 1000) {
+        difference.value = 0;
+    }
+
     if (difference.value <= 0) {
         clearInterval(updating);
     }
@@ -106,15 +110,15 @@ span {
     font-size: clamp(1.8rem, 5vw, 4rem);
     font-weight: 600;
     line-height: 1.7;
-    
+
 }
 
 img {
     width: 40%;
-    
+
     @media (max-width: 480px) {
         width: 100%;
     }
-    
+
 }
 </style>
