@@ -53,14 +53,14 @@ let updating = setInterval(() => {
         <p>Nessa festas de fim de ano mande um presente para a pessoa amada e compartilhe a alegria do Natal.</p>
         <div>
             <NumberFlowGroup>
-                <NumberFlow :trend="-1" :value="remaining.Days" :format="{ minimumIntegerDigits: 1 }" />
-                <span>d - </span>
-                <NumberFlow :trend="-1" :value="remaining.Hours" :format="{ minimumIntegerDigits: 1 }" />
-                <span>h - </span>
-                <NumberFlow :trend="-1" :value="remaining.Minutes" :format="{ minimumIntegerDigits: 2 }" />
-                <span>m - </span>
-                <NumberFlow :trend="-1" :value="remaining.Seconds" :format="{ minimumIntegerDigits: 1 }" />
-                <span>s</span>
+                <NumberFlow :trend="-1" suffix="d - " :value="remaining.Days" :format="{ minimumIntegerDigits: 1 }" />
+
+                <NumberFlow :trend="-1" suffix="h - " :value="remaining.Hours" :format="{ minimumIntegerDigits: 1 }" />
+
+                <NumberFlow :trend="-1" suffix="m - " :value="remaining.Minutes"
+                    :format="{ minimumIntegerDigits: 2 }" />
+
+                <NumberFlow :trend="-1" suffix="s" :value="remaining.Seconds" :format="{ minimumIntegerDigits: 1 }" />
             </NumberFlowGroup>
             <p v-if="message">{{ message }}</p>
         </div>
@@ -105,7 +105,7 @@ div {
 }
 
 number-flow-vue::part(number),
-span {
+number-flow-vue::part(suffix) {
     color: #CD3C32;
     font-size: clamp(1.8rem, 5vw, 4rem);
     font-weight: 600;
