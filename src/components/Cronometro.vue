@@ -4,7 +4,7 @@ import NumberFlow, { NumberFlowGroup } from '@number-flow/vue';
 import Presents from "../assets/presents.png";
 
 let currentTime = ref(new Date());
-const christmasTime = new Date("2024-12-25T00:00:00");
+const christmasTime = new Date("2025-12-25T00:00:00");
 let difference = computed(() => christmasTime - currentTime.value);
 
 const second = 1000;
